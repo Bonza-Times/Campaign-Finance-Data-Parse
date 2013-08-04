@@ -1,0 +1,53 @@
+#issue with donor missing from spreadsheet	
+	#previous solution
+		#set working drive
+		#save workspace, 
+		#load workspace, 
+		#rbind
+	#current solution
+		#set working drive
+		#if table exists,
+			#these commands can be placed as a block underneath each 5 
+		#save table as .Rdata, 
+		#load .Rdata, 
+		#rbind
+
+#other details
+	#Coordination
+		#all out files will be named the same
+		#each script will be uniquely labeled at the top and bottom
+	#Efficiency
+		#remove commands for binding rows without saving spreadsheets of interest to .Rdata first
+
+#Command:
+
+
+#check
+setwd("C:\\Documents and Settings\\Ty\\My Documents\\test")
+
+	if(!exists("Cor02", mode="global.env"))save(Cor02,file="ohtwo.Rdata")
+	if(!exists("Cor04", mode="global.env"))save(Cor04,file="ohfo.Rdata")
+	if(!exists("Cor09", mode="global.env"))save(Cor09,file="ohnine.Rdata")
+	if(!exists("Cor08", mode="global.env"))save(Cor08,file="ohate.Rdata")
+	
+#check
+	load("C:\\Documents and Settings\\Ty\\My Documents\\test\\ohtwo.Rdata")
+	load("C:\\Documents and Settings\\Ty\\My Documents\\test\\ohfo.Rdata")
+	load("C:\\Documents and Settings\\Ty\\My Documents\\test\\ohnine.Rdata")
+	load("C:\\Documents and Settings\\Ty\\My Documents\\test\\ohate.Rdata")
+
+ls()
+
+blue<-rbind(...,...)
+
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\test")
+#writing table to csv
+out_file <- file("attempt.csv", open="a")
+write.table(blue, file=out_file, sep=",", dec=".", quote=FALSE, 
+col.names=NA, row.names=TRUE)
+close(out_file)
+		

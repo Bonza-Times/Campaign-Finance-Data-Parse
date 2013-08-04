@@ -1,0 +1,49 @@
+%7-Eleven%	SE1:8	
+
+%Best Buy%	BB1:8
+
+%CVS Corp%	CC
+
+%Cash America International% CA
+
+%Circuit City Stores% CS
+
+%Dairy Mart Inc% DM
+
+%Eddie Bauer% EB
+
+%Gap Inc% GI
+
+%JC Penney% JC
+
+%Limited Inc% LI
+
+%Lowe's Companies% LC
+
+%Macy's Department Store% MD
+
+%Macy's% MC
+
+%May Department Stores% MY
+
+%Montgomery Ward% MW
+
+%Pier 1 Imports% PI
+
+%Radioshack% RK
+
+%Rite Aid Corp% RA
+
+%Saks Fifth Avenue% SF
+
+%Saks Inc% SN
+
+%Sears% SR
+
+%Staples Inc% SP
+
+%Target Corp% TC
+
+%Wal-Mart Stores% WM
+
+

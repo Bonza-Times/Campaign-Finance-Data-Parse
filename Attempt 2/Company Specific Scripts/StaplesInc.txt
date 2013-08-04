@@ -1,0 +1,733 @@
+#Individual Donors for Retail Sales Companies 1990-2010
+
+#load file
+	indiv00.1<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv00.1.csv")
+
+	indiv00.2<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv00.2.csv")
+
+	indiv00.3<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv00.3.csv")
+
+	indiv00.4<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv00.4.csv")
+
+	indiv00.5<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv02.1.csv")
+#check
+
+#library
+	library(sqldf)
+#search for name
+	name1<-sqldf("select * from 'indiv00.1' where Orgname like '%Staples Inc%'")
+	
+#check
+	name2<-sqldf("select * from 'indiv00.2' where Orgname like '%Staples Inc%'")
+	
+#check
+	name3<-sqldf("select * from 'indiv00.3' where Orgname like '%Staples Inc%'")
+	
+#check
+	name4<-sqldf("select * from 'indiv00.4' where Orgname like '%Staples Inc%'")
+	
+#check
+	name5<-sqldf("select * from 'indiv00.5' where Orgname like '%Staples Inc%'")
+
+#check
+#merge data
+
+#merge
+
+	
+	na1<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name1 group by 
+	ContribID,Cycle") 
+
+	na2<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name2 group by 
+	ContribID,Cycle")
+
+	na3<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name3 group by 
+	ContribID,Cycle") 
+
+	na4<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name4 group by 
+	ContribID,Cycle")
+
+	na5<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name5 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na1,na2,na3,na4,na5)
+
+#check
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP1.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check
+
+#load file
+
+	indiv00.6<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv02.2.csv")
+
+	indiv00.7<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv02.3.csv")
+
+	indiv00.8<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv04.1.csv")
+
+	indiv00.9<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv04.2.csv")
+
+	indiv00.10<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv04.3.csv")
+#check
+
+#library
+	library(sqldf)
+#search for name	
+
+	name6<-sqldf("select * from 'indiv00.6' where Orgname like '%Staples Inc%'")
+	
+#check
+	name7<-sqldf("select * from 'indiv00.7' where Orgname like '%Staples Inc%'")
+	
+#check
+	name8<-sqldf("select * from 'indiv00.8' where Orgname like '%Staples Inc%'")
+	
+#check
+	name9<-sqldf("select * from 'indiv00.9' where Orgname like '%Staples Inc%'")
+	
+#check
+	name10<-sqldf("select * from 'indiv00.10' where Orgname like '%Staples Inc%'")   
+
+
+#check
+#merge
+
+	na6<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name6 group by 
+	ContribID,Cycle") 
+
+	na7<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name7 group by 
+	ContribID,Cycle")
+
+	na8<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name8 group by 
+	ContribID,Cycle") 
+
+	na9<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name9 group by 
+	ContribID,Cycle")
+
+	na10<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name10 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na6,na7,na8,na9,na10)
+
+#check
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP2.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check
+
+#load file
+	indiv00.11<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv04.4.csv")
+
+	indiv00.12<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv04.5.csv")
+
+	indiv00.13<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv04.6.csv")
+
+	indiv00.14<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv06.1.csv")
+
+	indiv00.15<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv06.2.csv")
+
+#check
+
+#library
+	library(sqldf)
+#search for name
+#check
+	name11<-sqldf("select * from 'indiv00.11' where Orgname like '%Staples Inc%'")
+	
+#check
+	name12<-sqldf("select * from 'indiv00.12' where Orgname like '%Staples Inc%'")
+	
+#check
+	name13<-sqldf("select * from 'indiv00.13' where Orgname like '%Staples Inc%'")
+	
+#check
+	name14<-sqldf("select * from 'indiv00.14' where Orgname like '%Staples Inc%'")
+	
+#check
+	name15<-sqldf("select * from 'indiv00.15' where Orgname like '%Staples Inc%'")
+
+#check
+#merge
+
+
+	na11<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name11 group by 
+	ContribID,Cycle") 
+
+	na12<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name12 group by 
+	ContribID,Cycle")
+
+	na13<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name13 group by 
+	ContribID,Cycle") 
+
+	na14<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name14 group by 
+	ContribID,Cycle")
+
+	na15<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name15 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na11,na12,na13,na14,na15)
+
+#check
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP3.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check	
+
+#load file
+
+	indiv00.16<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv06.3.csv")
+
+	indiv00.17<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv06.4.csv")
+
+	indiv00.18<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv06.5.csv")
+
+	indiv00.19<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.1.csv")
+
+	indiv00.20<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.2.csv")
+#check
+
+#library
+	library(sqldf)
+#search for name
+	
+#check
+	name16<-sqldf("select * from 'indiv00.16' where Orgname like '%Staples Inc%'")
+	
+#check
+	name17<-sqldf("select * from 'indiv00.17' where Orgname like '%Staples Inc%'")
+	
+#check
+	name18<-sqldf("select * from 'indiv00.18' where Orgname like '%Staples Inc%'")
+	
+#check
+	name19<-sqldf("select * from 'indiv00.19' where Orgname like '%Staples Inc%'")
+	
+#check
+	name20<-sqldf("select * from 'indiv00.20' where Orgname like '%Staples Inc%'")
+
+#check
+#merge
+
+
+	na16<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name16 group by 
+	ContribID,Cycle") 
+
+	na17<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name17 group by 
+	ContribID,Cycle")
+
+	na18<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name18 group by 
+	ContribID,Cycle") 
+
+	na19<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name19 group by 
+	ContribID,Cycle")
+
+	na20<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name20 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na16,na17,na18,na19,na20)
+
+#check
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP4.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check	
+
+
+#load file
+	indiv00.21<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.3.csv")
+
+	indiv00.22<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.4.csv")
+
+	indiv00.23<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.5.csv")
+
+	indiv00.24<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.6.csv")
+
+	indiv00.25<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.7.csv")
+
+#check
+
+#library
+	library(sqldf)
+#search for name
+
+#check
+	name21<-sqldf("select * from 'indiv00.21' where Orgname like '%Staples Inc%'")
+	
+#check
+	name22<-sqldf("select * from 'indiv00.22' where Orgname like '%Staples Inc%'")
+	
+#check
+	name23<-sqldf("select * from 'indiv00.23' where Orgname like '%Staples Inc%'")
+	
+#check
+	name24<-sqldf("select * from 'indiv00.24' where Orgname like '%Staples Inc%'")
+	
+#check
+	name25<-sqldf("select * from 'indiv00.25' where Orgname like '%Staples Inc%'")
+
+#check	
+
+#merge
+
+
+	na21<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name21 group by 
+	ContribID,Cycle") 
+
+	na22<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name22 group by 
+	ContribID,Cycle")
+
+	na23<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name23 group by 
+	ContribID,Cycle") 
+
+	na24<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name24 group by 
+	ContribID,Cycle")
+
+	na25<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name25 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na21,na22,na23,na24,na25)
+
+#check
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP5.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check
+
+#Load file
+
+	indiv00.26<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.8.csv")
+
+	indiv00.27<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv08.9.csv")
+
+	indiv00.28<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv10.1.csv")
+
+	indiv00.29<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv10.2.csv")
+
+	indiv00.30<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv10.3.csv")
+
+#check
+
+#library
+	library(sqldf)
+#search for name
+#check
+	name26<-sqldf("select * from 'indiv00.26' where Orgname like '%Staples Inc%'")
+	
+#check
+	name27<-sqldf("select * from 'indiv00.27' where Orgname like '%Staples Inc%'")
+	
+#check
+	name28<-sqldf("select * from 'indiv00.28' where Orgname like '%Staples Inc%'")
+	
+#check
+	name29<-sqldf("select * from 'indiv00.29' where Orgname like '%Staples Inc%'")
+	
+#check
+	name30<-sqldf("select * from 'indiv00.30' where Orgname like '%Staples Inc%'")
+
+#check
+#merge
+
+
+	na26<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name26 group by 
+	ContribID,Cycle") 
+
+	na27<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name27 group by 
+	ContribID,Cycle")
+
+	na28<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name28 group by 
+	ContribID,Cycle") 
+
+	na29<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name29 group by 
+	ContribID,Cycle")
+
+	na30<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name30 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na26,na27,na28,na29,na30)
+
+#check
+	
+#check 
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP6.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check
+
+	
+
+#load file
+	indiv00.31<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv10.4.csv")
+
+	indiv00.32<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv10.5.csv")
+
+	indiv00.33<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv96.csv")
+
+	indiv00.34<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv96.2.csv")
+
+	indiv00.35<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv98.csv")
+
+#check
+
+#library
+	library(sqldf)
+#search for name
+
+#check
+	name31<-sqldf("select * from 'indiv00.31' where Orgname like '%Staples Inc%'")
+	
+#check
+	name32<-sqldf("select * from 'indiv00.32' where Orgname like '%Staples Inc%'")
+	
+#check
+	name33<-sqldf("select * from 'indiv00.33' where Orgname like '%Staples Inc%'")
+	
+#check
+	name34<-sqldf("select * from 'indiv00.34' where Orgname like '%Staples Inc%'")
+	
+#check
+	name35<-sqldf("select * from 'indiv00.35' where Orgname like '%Staples Inc%'")
+	
+#check
+
+#merge
+
+
+	na31<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name31 group by 
+	ContribID,Cycle") 
+
+	na32<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name32 group by 
+	ContribID,Cycle")
+
+	na33<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name33 group by 
+	ContribID,Cycle") 
+
+	na34<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name34 group by 
+	ContribID,Cycle")
+
+	na35<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name35 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na31,na32,na33,na34,na35)
+
+#check
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP7.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check
+
+
+#load file
+
+	indiv00.36<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv98.2.csv")
+
+	indiv00.37<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indiv98.3.csv")
+
+	indiv00.38<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indivs90.csv")
+
+	indiv00.39<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indivs92.csv")
+
+	indiv00.40<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\crp data\\By Type\\indivs\\indivs94.csv")
+#check
+
+#library
+	library(sqldf)
+#search for name
+
+#check
+	name36<-sqldf("select * from 'indiv00.36' where Orgname like '%Staples Inc%'")
+	
+#check
+	name37<-sqldf("select * from 'indiv00.37' where Orgname like '%Staples Inc%'")
+	
+#check
+	name38<-sqldf("select * from 'indiv00.38' where Orgname like '%Staples Inc%'")
+	
+#check
+	name39<-sqldf("select * from 'indiv00.39' where Orgname like '%Staples Inc%'")
+
+#check
+	name40<-sqldf("select * from 'indiv00.40' where Orgname like '%Staples Inc%'")
+
+#check
+
+#merge
+
+	na36<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name36 group by 
+	ContribID,Cycle") 
+
+	na37<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name37 group by 
+	ContribID,Cycle")
+	
+	na38<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name38 group by 
+	ContribID,Cycle") 
+	
+	na39<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name39 group by 
+	ContribID,Cycle")
+	
+	na40<-sqldf("select Cycle,FECTransID,ContribID,Contrib,ConFirst,RecipID,
+	Orgname,UltOrg,RealCode,Date,Amount,Street,City,State,Zip,
+	RecipCode,Type,CmteID,OtherID,Gender,FecOccEmp from name40 group by 
+	ContribID,Cycle") 
+
+
+#check
+
+name<-rbind(na36,na37,na38,na39,na40)
+
+#check
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump")
+#writing table to csv
+	out_file <- file("SP8.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check
+
+#load file
+
+	a1<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP1.csv")
+
+	a2<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP2.csv")
+
+	a3<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP3.csv")
+
+	a4<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP4.csv")
+	
+	a5<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP5.csv")
+
+	a6<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP6.csv")
+
+	a7<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP7.csv")
+
+	a8<-read.csv("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\SP8.csv")
+
+#merge
+
+	name<-rbind(SP1,SP2,SP3,SP4,SP5,SP6,SP7,SP8)
+
+#write table
+#library
+	library(XML)
+	setwd("C:\\Documents and Settings\\Ty\\My Documents\\Krasno.RA\\Data\\Name Dump\\Retail")
+#writing table to csv
+	out_file <- file("StaplesInc.csv", open="a")
+	write.table(name, file=out_file, sep=",", dec=".", quote=FALSE, 
+	col.names=NA, row.names=TRUE)
+	close(out_file)
+#check
+
+#clean house
+	detach
+
+	rm(list = ls(), envir = globalenv())
+
+#check
