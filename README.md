@@ -1,7 +1,7 @@
 Campaign-Finance-Data-Parse
 ===========================
 Task as a research assistant in grad school. Parsed all campaign finance data since about 1990 for employees of specific 
-retail companies the prof wanted to write a paper about.
+retail companies that the prof wanted to write a paper about.
 
 Parsing is done using the sqldf package in R (SQLite). 
 
