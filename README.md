@@ -5,7 +5,7 @@ retail companies that the prof wanted to write a paper about.
 
 Parsing is done using the sqldf package in R (SQLite). 
 
-Attempt 3 was the succesful at making this work. "Scripts for comp lab" were for each company. Each script was run on a 
+Attempt 3 was succesful at making this work. "Scripts for comp lab" were for each company. Each script was run on a 
 different computer. "computer lab" is the output from those scripts. However, that's a decent sized file, I deleted 
 output from comp 2 through comp 15. comp 1 has one csv file as an example, the rest were deleted. 
 
